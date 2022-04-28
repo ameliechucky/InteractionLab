@@ -59,5 +59,4 @@ void draw() {
   //image(cam, 0, 0);
   PR = R;
 }
-void mousePressed() {
-}
+
