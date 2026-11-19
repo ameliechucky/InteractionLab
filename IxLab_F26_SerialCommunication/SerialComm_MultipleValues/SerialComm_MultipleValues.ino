@@ -1,9 +1,9 @@
 /*interactionLab Fall 2026!
 ¡¡¡ stop p5.js before sending this code to arduino !!!
 */
-const int numSensors = 3;  //change this according to your project
-int sensorValues[numSensors]; //array to store sensor values
-int p_sensorValues[numSensors]; //array to store previous sensor values
+const int numSensors = 3;        //change this according to your project
+int sensorValues[numSensors];    //array to store sensor values
+int p_sensorValues[numSensors];  //array to store previous sensor values
 
 unsigned long lastRead = 0;
 unsigned long period = 100;
@@ -30,17 +30,19 @@ void loop() {
     sensorValues[0] = analogRead(A0);
     sensorValues[1] = digitalRead(2);
     sensorValues[2] = digitalRead(3);
-  }
-  //only print if at least one sensor value changed
-  if (checkSensors()) {
-    for (int i = 0; i < numSensors; i++) {
-      Serial.print(sensorValues[i]);
-      if (i != (numSensors - 1)) {
-        Serial.print(","); //add a comma to separate them
-      } else {
-        Serial.println();  // add linefeed after sending the last sensor value
+
+    //only print if at least one sensor value changed
+    
+    if (checkSensors()) { //comment this line if needed
+      for (int i = 0; i < numSensors; i++) {
+        Serial.print(sensorValues[i]);
+        if (i != (numSensors - 1)) {
+          Serial.print(",");  //add a comma to separate them
+        } else {
+          Serial.println();  // add linefeed after sending the last sensor value
+        }
       }
-    }
+    } //comment this line if needed
   }
   //record the last reading from every sensor
   for (int i = 0; i < numSensors; i++) {
